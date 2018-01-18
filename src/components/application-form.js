@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { Multiselect } from 'react-widgets';
+import {Paper} from 'material-ui';
 import classnames from 'classnames';
 import 'react-widgets/dist/css/react-widgets.css';
 
@@ -10,6 +11,14 @@ const scopes = [
     { scopes: 'email', value: 'email'},
     { scopes: 'image', value: 'image'}
 ]
+
+const style = {
+    height: 500,
+    width: 500,
+    margin: 20,
+    textAlign: 'center',
+    display: 'inline-block'
+}
 
 class ApplicationForm extends Component {
 
@@ -37,8 +46,10 @@ class ApplicationForm extends Component {
         const { handleSubmit, pristine, submitting, loading } = this.props;
 
         return(
-            <div>
+            
+                <Paper style={style} zDepth={3} rounded={false}>
                 <div>
+                    
                     <form onSubmit={handleSubmit} loading={loading}>
                         <div>
                             <label>Client Id</label>
@@ -60,8 +71,10 @@ class ApplicationForm extends Component {
                             </div>
                             <button type="submit" disabled={pristine || submitting }>Register</button>
                     </form>
+                    
                 </div>
-            </div>
+                </Paper>
+            
         )
     }
 }
